@@ -1,0 +1,16 @@
+{
+  "name": "aws-webdeploy",
+  "version": "1.0.0",
+  "description": "Commandline tool used to deploy a web application.",
+  "main": "index.js",
+  "repository": "git@github.com:dsandor/aws-webdeploy.git",
+  "author": "David Sandor <david.sandor@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "aws-cdk-static-website": "^1.0.22",
+    "commander": "^2.20.0"
+  },
+  "bin": {
+    "aws-webdeploy": "bin/aws-webdeploy"
+  }
+}
