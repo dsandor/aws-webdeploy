@@ -12,8 +12,6 @@ const workingPath = process.cwd();
 
 const pkg = require(`${workingPath}/package.json`);
 
-console.log('pkg:', pkg);
-
 if (!pkg.webdeploy) {
   console.error('Error, package.json should have a "webdeploy" configuration section.');
   process.exit(2);
