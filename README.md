@@ -8,6 +8,7 @@ Tiny utility to allow configuring a web application deployment from your package
 
 [https://github.com/dsandor/aws-webdeploy-example](https://github.com/dsandor/aws-webdeploy-example)
 
+[![asciicast](https://asciinema.org/a/XY3ElLm9kXrWmTkCign9QuyMx.svg)](https://asciinema.org/a/XY3ElLm9kXrWmTkCign9QuyMx)
 
 ## What are the pre-requisites?
 
