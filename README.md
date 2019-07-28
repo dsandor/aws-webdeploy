@@ -4,6 +4,11 @@ Tiny utility to allow configuring a web application deployment from your package
 
 `TLDR;` Install this along with the AWS CDK CLI (installed globally) and you can `yarn deploy` your static website out of your **dist** directory.
 
+### Full example project
+
+[https://github.com/dsandor/aws-webdeploy-example](https://github.com/dsandor/aws-webdeploy-example)
+
+
 ## What are the pre-requisites?
 
 - AWS CLI should be [installed and working](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
