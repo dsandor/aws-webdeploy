@@ -182,6 +182,10 @@
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/region-info/-/region-info-1.2.0.tgz#74773fc2de12379812553f1c061c538bb609071f"
 
+"@types/node@^12.6.8":
+  version "12.6.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.8.tgz#e469b4bf9d1c9832aee4907ba8a051494357c12c"
+
 "@types/semver@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-6.0.1.tgz#a984b405c702fa5a7ec6abc56b37f2ba35ef5af6"

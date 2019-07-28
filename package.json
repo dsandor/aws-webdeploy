@@ -7,10 +7,14 @@
   "author": "David Sandor <david.sandor@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/node": "^12.6.8",
     "aws-cdk-static-website": "^1.0.22",
     "commander": "^2.20.0"
   },
   "bin": {
     "aws-webdeploy": "bin/aws-webdeploy"
+  },
+  "scripts": {
+    "build": "tsc && cp deploy.js bin/aws-webdeploy && chmod +x bin/aws-webdeploy"
   }
 }
