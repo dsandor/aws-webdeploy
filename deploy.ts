@@ -18,7 +18,7 @@ if (!pkg.webdeploy) {
 }
 
 const props: IStaticWebsiteProps = {
-  websiteDistPath: pkg.webdeploy.distPath,
+  websiteDistPath: pkg.webdeploy.distPath || pkg.webdeploy.websiteDistPath,
   deploymentVersion: pkg.deploymentVersion || pkg.version,
   resourcePrefix: pkg.webdeploy.resourcePrefix,
   indexDocument: pkg.webdeploy.indexDocument || 'index.html',
