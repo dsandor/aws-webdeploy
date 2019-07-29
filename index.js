@@ -82,7 +82,8 @@ async function promptForConfig(existingConfig = {}) {
 
 	if (response.certificateArn === '') delete response.certificateArn;
 	if (response.domainNames === '') delete response.domainNames;
-
+	if (response.deploymentVersion === '') delete response.deploymentVersion;
+	
 	pkg.webdeploy = { ...response };
 
 	await fs.writeJSON(packageJsonFilePath, pkg, { spaces: 2, EOL: '\n' });
