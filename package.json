@@ -1,6 +1,6 @@
 {
   "name": "aws-webdeploy",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Commandline tool used to deploy a web application.",
   "bin": "index.js",
   "repository": "git@github.com:dsandor/aws-webdeploy.git",
@@ -8,6 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/node": "^12.6.8",
+    "aws-cdk": "^1.2.0",
     "aws-cdk-static-website": "^1.0.22",
     "commander": "^2.20.0",
     "fs-extra": "^8.1.0",
