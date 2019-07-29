@@ -4,17 +4,24 @@ const path = require('path');
 const prompts = require('prompts');
 
 const executingFromPath = process.cwd();
-const pkg = require(`${executingFromPath}/package.json`);
+const packageJsonFilePath = `${executingFromPath}/package.json`;
+const pkg = require(packageJsonFilePath);
 
 if (!pkg) {
 	console.error(`package.json was not found in ${executingFromPath}`);
 	process.exit(1);
 }
 
+console.log('process.argv:', process.argv);
+
 const existingConfig = pkg.webdeploy || {};
 const shouldInit = process.argv.length > 2 ? process.argv[2] === 'init' : false;
 
 if (!pkg.webdeploy || shouldInit) {
+	promptForConfig();
+}
+
+async function promptForConfig() {
 	const promptConfig = [
 		{
 			type: 'text',
@@ -53,10 +60,14 @@ if (!pkg.webdeploy || shouldInit) {
 		},
 	];
 
-	(async () => {
-		const response = await prompts(promptConfig);
-		console.log('responses:\n', response);
-	})
-}
+	let response = await prompts(promptConfig);
 
-console.log('Done!');
+	if (response.certificateArn === '') delete response.certificateArn;
+	if (response.domainNames === '') delete response.domainNames;
+
+	pkg.webdeploy = { ...response };
+
+	await fs.writeJSON(packageJsonFilePath, pkg);
+	console.log('package.json has been updated with this config:\n');
+	console.table(response);
+}
