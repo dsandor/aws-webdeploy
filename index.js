@@ -23,20 +23,7 @@ async function run() {
 		await promptForConfig(pkg.webdeploy);
 	}
 
-	const cdkProcess = spawn('cdk', ['deploy', '--app', `${__dirname}/deploy.js`]);
-	
-	cdkProcess.stdout.on('data', (data) => {
-		console.log(`${data}`);
-	});
-	
-	cdkProcess.stderr.on('data', (data) => {
-		console.log(`${data}`);
-	});
-	
-	cdkProcess.on('close', (code) => {
-		if (code > 0) console.log(`child process exited with code ${code}`);
-		else console.log('Success!');
-	});
+	const cdkProcess = spawn('cdk', ['deploy', '--app', `${__dirname}/deploy.js`], { stdio: 'inherit' });
 }
 
 async function promptForConfig(existingConfig = {}) {

@@ -1,6 +1,24 @@
 # aws-webdeploy
 Tiny utility to allow configuring a web application deployment from your package.json and leverage AWS-CDK.
 
+## NPX Usage (Option 1)
+
+Add the `webdeploy` section to your **package.json** file. *(see below for more options)*
+
+```
+  "webdeploy": {
+    "distPath": "./dist",
+    "resourcePrefix": "test-web-stack"
+  }
+```
+
+Then just do this:
+
+```
+npx aws-webdeploy
+```
+
+## Integrated as npm-script (Option 2)
 
 `TLDR;` Install this along with the AWS CDK CLI (installed globally) and you can `yarn deploy` your static website out of your **dist** directory.
 
