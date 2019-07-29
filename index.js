@@ -1,0 +1,1 @@
+console.log('aws-webdeploy: called from npx?');
