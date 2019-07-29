@@ -1,6 +1,6 @@
 {
   "name": "aws-webdeploy",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Commandline tool used to deploy a web application.",
   "bin": "index.js",
   "repository": "git@github.com:dsandor/aws-webdeploy.git",
@@ -9,9 +9,12 @@
   "dependencies": {
     "@types/node": "^12.6.8",
     "aws-cdk-static-website": "^1.0.22",
-    "commander": "^2.20.0"
+    "commander": "^2.20.0",
+    "fs-extra": "^8.1.0",
+    "prompts": "^2.1.0"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "aws-deploy": "./index.js"
   }
 }
