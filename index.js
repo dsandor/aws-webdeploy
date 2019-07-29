@@ -2,31 +2,44 @@
 const fs = require('fs-extra');
 const path = require('path');
 const prompts = require('prompts');
-const { spawn } = require('child_process');
+const { spawn, exec } = require('child_process');
+
+const executingFromPath = process.cwd();
+const packageJsonFilePath = `${executingFromPath}/package.json`;
+const pkg = require(packageJsonFilePath);
 
 async function run() {
-	const executingFromPath = process.cwd();
-	const packageJsonFilePath = `${executingFromPath}/package.json`;
-	const pkg = require(packageJsonFilePath);
-	
 	if (!pkg) {
 		console.error(`package.json was not found in ${executingFromPath}`);
 		process.exit(1);
 	}
 	
 	console.log('process.argv:', process.argv);
-	
-	const existingConfig = pkg.webdeploy || {};
+	console.log('packageJsonFilePath:', packageJsonFilePath);
+
 	const shouldInit = process.argv.length > 2 ? process.argv[2] === 'init' : false;
 	
 	if (!pkg.webdeploy || shouldInit) {
-		await promptForConfig();
+		await promptForConfig(pkg.webdeploy);
 	}
 
-	spawn('cdk', ['deploy', `--app ./deploy.js`]);
+	const cdkProcess = spawn('cdk', ['deploy', '--app', `${__dirname}/deploy.js`]);
+	
+	cdkProcess.stdout.on('data', (data) => {
+		console.log(`${data}`);
+	});
+	
+	cdkProcess.stderr.on('data', (data) => {
+		console.log(`${data}`);
+	});
+	
+	cdkProcess.on('close', (code) => {
+		if (code > 0) console.log(`child process exited with code ${code}`);
+		else console.log('Success!');
+	});
 }
 
-async function promptForConfig() {
+async function promptForConfig(existingConfig = {}) {
 	const promptConfig = [
 		{
 			type: 'text',
@@ -72,7 +85,7 @@ async function promptForConfig() {
 
 	pkg.webdeploy = { ...response };
 
-	await fs.writeJSON(packageJsonFilePath, pkg);
+	await fs.writeJSON(packageJsonFilePath, pkg, { spaces: 2, EOL: '\n' });
 	console.log('package.json has been updated with this config:\n');
 	console.table(response);
 }
