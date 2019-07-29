@@ -2,23 +2,28 @@
 const fs = require('fs-extra');
 const path = require('path');
 const prompts = require('prompts');
+const { spawn } = require('child_process');
 
-const executingFromPath = process.cwd();
-const packageJsonFilePath = `${executingFromPath}/package.json`;
-const pkg = require(packageJsonFilePath);
+async function run() {
+	const executingFromPath = process.cwd();
+	const packageJsonFilePath = `${executingFromPath}/package.json`;
+	const pkg = require(packageJsonFilePath);
+	
+	if (!pkg) {
+		console.error(`package.json was not found in ${executingFromPath}`);
+		process.exit(1);
+	}
+	
+	console.log('process.argv:', process.argv);
+	
+	const existingConfig = pkg.webdeploy || {};
+	const shouldInit = process.argv.length > 2 ? process.argv[2] === 'init' : false;
+	
+	if (!pkg.webdeploy || shouldInit) {
+		await promptForConfig();
+	}
 
-if (!pkg) {
-	console.error(`package.json was not found in ${executingFromPath}`);
-	process.exit(1);
-}
-
-console.log('process.argv:', process.argv);
-
-const existingConfig = pkg.webdeploy || {};
-const shouldInit = process.argv.length > 2 ? process.argv[2] === 'init' : false;
-
-if (!pkg.webdeploy || shouldInit) {
-	promptForConfig();
+	spawn('cdk', ['deploy', `--app ./deploy.js`]);
 }
 
 async function promptForConfig() {
@@ -71,3 +76,5 @@ async function promptForConfig() {
 	console.log('package.json has been updated with this config:\n');
 	console.table(response);
 }
+
+run();
