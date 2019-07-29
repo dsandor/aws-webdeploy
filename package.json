@@ -1,6 +1,6 @@
 {
   "name": "aws-webdeploy",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Commandline tool used to deploy a web application.",
   "bin": "index.js",
   "repository": "git@github.com:dsandor/aws-webdeploy.git",
