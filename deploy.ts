@@ -22,7 +22,7 @@ const props: IStaticWebsiteProps = {
   deploymentVersion: pkg.deploymentVersion || pkg.version,
   resourcePrefix: pkg.webdeploy.resourcePrefix,
   indexDocument: pkg.webdeploy.indexDocument || 'index.html',
-  certificateArn: pkg.certificateArn,
+  certificateArn: pkg.webdeploy.certificateArn,
   domainNames: pkg.webdeploy.domainNames,
 };
 
