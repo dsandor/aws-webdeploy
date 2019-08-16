@@ -7,6 +7,7 @@ const { spawn, exec } = require('child_process');
 const executingFromPath = process.cwd();
 const packageJsonFilePath = `${executingFromPath}/package.json`;
 const pkg = require(packageJsonFilePath);
+const env = Object.create(process.env);
 
 async function run() {
 	if (!pkg) {
@@ -23,7 +24,11 @@ async function run() {
 		await promptForConfig(pkg.webdeploy);
 	}
 
-	const cdkProcess = spawn('cdk', ['deploy', '--app', `${__dirname}/deploy.js`], { stdio: 'inherit' });
+	if (process.argv.length > 2) {
+		env.WEBDEPLOY_CONFIG_NAME = process.argv[2];
+	}
+
+	spawn('cdk', ['deploy', '--app', `${__dirname}/deploy.js`], { stdio: 'inherit', env });
 }
 
 async function promptForConfig(existingConfig = {}) {
