@@ -371,10 +371,10 @@ at-least-node@^1.0.0:
   resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
-aws-cdk-static-website@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/aws-cdk-static-website/-/aws-cdk-static-website-2.0.0.tgz#5684ba9d205eaf15a12e2a6a9e4247e46e9b5048"
-  integrity sha512-B4gSi7UY+UDA6qxw17vg0nIpw/OkFGzSskBzj54Q/RjLiRc1ZjCaXejuIjHrpkpHk1i7nmLcFUDvHCyjmxepPg==
+aws-cdk-static-website@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/aws-cdk-static-website/-/aws-cdk-static-website-2.1.0.tgz#4874c9e5fb7fe9fdf1cd61d1aae4a9ae18cd85a8"
+  integrity sha512-HsDdiNnX+AbtuBB0BBtN53BdPfcPlMySGyCn09OYlkJ5y3dZKmqhivIDOSDd/w31q/pKOE6TkTMixSRMAxBX6A==
   dependencies:
     "@aws-cdk/aws-cloudfront" "^1.52.0"
     "@aws-cdk/aws-iam" "^1.52.0"
