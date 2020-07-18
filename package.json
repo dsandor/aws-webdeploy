@@ -9,7 +9,7 @@
   "dependencies": {
     "@types/node": "^12.6.8",
     "aws-cdk": "^1.2.0",
-    "aws-cdk-static-website": "1.0.24",
+    "aws-cdk-static-website": "^2.0.0",
     "commander": "^2.20.0",
     "fs-extra": "^8.1.0",
     "prompts": "^2.1.0"
