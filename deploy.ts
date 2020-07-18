@@ -49,4 +49,6 @@ console.log('Using the following properties for deployment:');
 console.table(props);
 
 const app = new cdk.App();
-new MyWebStack(app, stackName || pkg.name);
+
+const stack = new MyWebStack(app, stackName || pkg.name);
+console.log('stack:', stack);
